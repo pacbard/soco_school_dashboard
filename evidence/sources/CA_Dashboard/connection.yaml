@@ -1,5 +1,8 @@
 # This file was automatically generated
-name: CA_Dashboard
 type: motherduck
+name: CA_Dashboard
 options:
   database: CA_Dashboard
+# Advanced Options, you probably don't want to change this
+buildOptions:
+  batchSize: 1000000
