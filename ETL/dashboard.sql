@@ -32,6 +32,11 @@ select
       else color
     end as color,
     box,
+    case
+        when min(case when accountabilitymet = 'Y' then color end) over (partition by cds, reportingyear) = 1 then 'Yes'
+        when min(case when accountabilitymet = 'Y' then color end) over (partition by cds, reportingyear) > 1 then 'No'
+        else null
+    end as diffAssistance,
     accountabilitymet
 from 
     (

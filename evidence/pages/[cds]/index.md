@@ -24,7 +24,8 @@ select distinct
     statuslevel,
     changelevel,
     color,
-    box
+    box,
+    diffAssistance
 from CA_Dashboard.dash
 where 
     cds = '${params.cds}'
@@ -44,7 +45,8 @@ using
     max(statuslevel) as level,
     max(changelevel) as change,
     max(color) as color,
-    max(box) as box
+    max(box) as box,
+    max(diffAssistance) as diffAssistance
 ```
 
 {#each cds_wide as year}
@@ -489,8 +491,9 @@ using
 # Overview
 
 ```sql cds_year
-with pivoted as (
-    pivot (select * from ${cds_long} where studentgroup = 'ALL')
+with 
+pivoted as (
+    pivot (select * exclude (diffAssistance) from ${cds_long} where studentgroup = 'ALL')
     on ReportingYear
     using 
         max(currstatus) as score,
@@ -498,45 +501,55 @@ with pivoted as (
         max(color) as color,
         max(changelevel) as changelevel,
         max(box) as box
+),
+diffAssistance as (
+    select 
+        indicator, 
+        max(diffAssistance) as "2024_diffAssistance" 
+    from ${cds_long} 
+    where reportingyear = 2024 
+    group by all
 )
 select
     *,
     case
-        when indicator = 'MATH' then 'CAASPP Math'
-        when indicator = 'ELA' then 'CAASPP ELA'
-        when indicator = 'ELPI' then 'English Language Learner Progress'
-        when indicator = 'SUS' then 'Suspension Rates'
-        when indicator = 'CHRON' then 'Chronic Absenteism'
-        when indicator = 'GRAD' then 'Graduation Rate'
-        when indicator = 'CCI' then 'College and Career Readiness'
+        when pivoted.indicator = 'MATH' then 'CAASPP Math'
+        when pivoted.indicator = 'ELA' then 'CAASPP ELA'
+        when pivoted.indicator = 'ELPI' then 'English Language Learner Progress'
+        when pivoted.indicator = 'SUS' then 'Suspension Rates'
+        when pivoted.indicator = 'CHRON' then 'Chronic Absenteism'
+        when pivoted.indicator = 'GRAD' then 'Graduation Rate'
+        when pivoted.indicator = 'CCI' then 'College and Career Readiness'
     end as indicatorName,
     case
-        when indicator = 'MATH' then 1
-        when indicator = 'ELA' then 2
-        when indicator = 'ELPI' then 3
-        when indicator = 'SUS' then 4
-        when indicator = 'CHRON' then 5
-        when indicator = 'GRAD' then 6
-        when indicator = 'CCI' then 7
+        when pivoted.indicator = 'MATH' then 1
+        when pivoted.indicator = 'ELA' then 2
+        when pivoted.indicator = 'ELPI' then 3
+        when pivoted.indicator = 'SUS' then 4
+        when pivoted.indicator = 'CHRON' then 5
+        when pivoted.indicator = 'GRAD' then 6
+        when pivoted.indicator = 'CCI' then 7
     end as indicatorOrder,
     case
-        when indicator = 'MATH' then '##0.0" points"'
-        when indicator = 'ELA' then '##0.0" points"'
-        when indicator = 'ELPI' then '##0.0"%"'
-        when indicator = 'SUS' then '##0.0"%"'
-        when indicator = 'CHRON' then '##0.0"%"'
-        when indicator = 'GRAD' then '##0.0"%"'
-        when indicator = 'CCI' then '##0.0"%"'
+        when pivoted.indicator = 'MATH' then '##0.0" points"'
+        when pivoted.indicator = 'ELA' then '##0.0" points"'
+        when pivoted.indicator = 'ELPI' then '##0.0"%"'
+        when pivoted.indicator = 'SUS' then '##0.0"%"'
+        when pivoted.indicator = 'CHRON' then '##0.0"%"'
+        when pivoted.indicator = 'GRAD' then '##0.0"%"'
+        when pivoted.indicator = 'CCI' then '##0.0"%"'
     end as indicatorFormat,
-    '/${params.cds}/equity/' || indicator as indicatorLink 
+    '/${params.cds}/equity/' || pivoted.indicator as indicatorLink 
 from pivoted
+    join diffAssistance on diffAssistance.indicator = pivoted.indicator
 order by indicatorOrder desc
 ```
 
-<DataTable data={cds_year} sort=indicatorOrder link=indicatorLink>
+<DataTable data={cds_year} sort=indicatorOrder link=indicatorLink wrapTitles=true>
     <Column id=indicatorName title="Indicator" wrapTitles=true/>
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=indicatorFormat/>
+    <Column id=2024_diffAssistance title="Differential Assistance" colGroup=2024 align=center fmtColumn=indicatorFormat/>
     <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=indicatorFormat/>
     <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
