@@ -46,15 +46,15 @@ create or replace table ELPI_2017 as
   );
 
 create or replace view ELPI as 
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, case when studentgroup = 'EL' then 'ALL' else studentgroup end as studentgroup, currstatus, statuslevel, changelevel, color, box from ELPI_2024
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, case when studentgroup = 'EL' then 'ALL' else studentgroup end as studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELPI_2024
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, changelevel, color, box from ELPI_2023
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from ELPI_2023
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box from ELPI_2022
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box, null as accountabilitymet from ELPI_2022
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box from ELPI_2019
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box, null as accountabilitymet from ELPI_2019
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, null as currstatus, null as statuslevel, null as changelevel, statuslevel as color, null as box from ELPI_2018
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, null as currstatus, null as statuslevel, null as changelevel, statuslevel as color, null as box, null as accountabilitymet from ELPI_2018
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, null as dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box from ELPI_2017
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, null as dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box, null as accountabilitymet from ELPI_2017
   ;
