@@ -27,7 +27,7 @@
 ```
 
 ```sql cds_wide
-pivot ${cds_long} as dash
+pivot (select * from ${cds_long} where reportingyear = 2024) as dash
 on studentgroup
 using 
     max(groupname) as group,
@@ -42,8 +42,6 @@ order by ReportingYear desc
 # Student Ethnicity
 
 {#each cds_wide as year}
-
-## {year.reportingyear}
 
 <Grid cols=6>
 
@@ -593,8 +591,6 @@ order by ReportingYear desc
 # Student Subgroups
 
 {#each cds_wide as year}
-
-## {year.reportingyear}
 
 <Grid cols=6>
 
@@ -1209,3 +1205,7 @@ from pivoted
     <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2019_score title=Score colGroup=2019 align=center fmtColumn=groupFormat/>
 </DataTable>
+
+<LinkButton url={'/'+params.cds}>
+    Return 
+</LinkButton>

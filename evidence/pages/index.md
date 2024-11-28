@@ -28,3 +28,7 @@ order by districtname
     <Column id=diffAssistance title="Differentiated Assistance"/>
     <Column id=districtLink contentType=link linkLabel="Details →" align=center/>
 </DataTable>
+
+<LinkButton url={'/'}>
+    Return to home page
+</LinkButton>

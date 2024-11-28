@@ -1,11 +1,11 @@
 ```sql cds_name
 select distinct
-    districtname
+    coalesce(schoolname, districtname) as name
 from CA_Dashboard.dash
 where cds = '${params.cds}'
 ```
 
-# School Dashboard for {cds_name[0].districtname}
+# School Dashboard for {cds_name[0].name}
 
 
 ```sql cds_long
@@ -38,7 +38,7 @@ order by
 ```
 
 ```sql cds_wide
-pivot (select * from ${cds_long} where studentgroup = 'ALL')
+pivot (select * from ${cds_long} where studentgroup = 'ALL' and reportingyear = 2024)
 on indicator
 using
     max(currstatus) as status,
@@ -50,8 +50,6 @@ using
 ```
 
 {#each cds_wide as year}
-
-### {year.reportingyear}
 
 <Grid cols=6>
 
@@ -488,7 +486,7 @@ using
 {/each}
 
 
-# Overview
+# Historical Overview
 
 ```sql cds_year
 with 
@@ -557,3 +555,38 @@ order by indicatorOrder desc
     <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2019_score title=Score colGroup=2019 align=center fmtColumn=indicatorFormat/>
 </DataTable>
+
+{#if params.cds.substr(params.cds.length - 7) == '0000000' }
+
+# School-Level Results
+
+```sql schools
+select distinct
+    cds,
+    schoolname,
+    max(case when accountabilitymet = 'Y' then diffAssistance end) as diffAssistance,
+    '/' || cds as schoolLink
+from CA_Dashboard.dash
+where
+    left(cds, 7) = left(${params.cds}, 7)
+    and
+    reportingyear = 2024
+    and
+    rtype = 'S'
+group by all
+order by schoolname
+```
+
+<DataTable data={schools} search=true rows=all link=schoolLink>
+    <Column id=schoolname title="School Name"/>
+    <Column id=diffAssistance title="Differentiated Assistance"/>
+    <Column id=schoolLink contentType=link linkLabel="Details →" align=center/>
+</DataTable>
+
+{:else}
+
+<LinkButton url={'/'+params.cds.substr(0, 7) + '0000000'}>
+    Return to district page
+</LinkButton>
+
+{/if}
