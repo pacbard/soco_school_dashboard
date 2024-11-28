@@ -583,6 +583,10 @@ order by schoolname
     <Column id=schoolLink contentType=link linkLabel="Details →" align=center/>
 </DataTable>
 
+<LinkButton url='/'>
+    Return to home page
+</LinkButton>
+
 {:else}
 
 <LinkButton url={'/'+params.cds.substr(0, 7) + '0000000'}>
