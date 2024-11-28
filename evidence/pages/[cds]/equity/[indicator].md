@@ -1,8 +1,9 @@
-# Equity Dashboard for for {params.indicator}
 
-```sql srcs_long
+# Equity Dashboard for {params.indicator}
+
+```sql cds_long
     select
-        left(ReportingYear, 4)::int as ReportingYear,
+        reportingyear::int as reportingyear,
         studentgroup,
         studentgroup as groupname,
         currstatus,
@@ -11,35 +12,38 @@
             when statuslevel = 0 then null
             else statuslevel
         end as level,
-        color
+        color,
+        accountabilitymet
     from CA_Dashboard.dash
     where
-        cds = '49402530000000'
+        cds = '${params.cds}'
         and
         indicator = '${params.indicator}'
         and
         left(reportingyear, 4)::int <> 2020
         and
         left(reportingyear, 4)::int > 2018
+    order by reportingyear
 ```
 
-```sql srcs_wide
-pivot ${srcs_long} as dash
+```sql cds_wide
+pivot ${cds_long} as dash
 on studentgroup
 using 
     max(groupname) as group,
     max(currstatus) as score,
     max(changelevel) as change, 
     max(level) as level,
-    max(color) as color
+    max(color) as color,
+    min(accountabilitymet) as accountabilitymet
 order by ReportingYear desc
 ```
 
 # Student Ethnicity
 
-{#each srcs_wide as year}
+{#each cds_wide as year}
 
-## {year.ReportingYear}
+## {year.reportingyear}
 
 <Grid cols=6>
 
@@ -588,9 +592,9 @@ order by ReportingYear desc
 
 # Student Subgroups
 
-{#each srcs_wide as year}
+{#each cds_wide as year}
 
-## {year.ReportingYear}
+## {year.reportingyear}
 
 <Grid cols=6>
 
@@ -1138,15 +1142,16 @@ order by ReportingYear desc
 
 # Overview
 
-```sql srcs_groups
+```sql cds_groups
 with pivoted as (
-    pivot ${srcs_long} as dash
+    pivot ${cds_long} as dash
     on reportingYear
     using 
         max(currstatus) as score,
         max(changelevel) as change,
         max(level) as level,
-        max(color) as color
+        max(color) as color,
+        min(accountabilitymet) as accountabilitymet
 )
 select
     *,
@@ -1191,11 +1196,12 @@ select
 from pivoted
 ```
 
-<DataTable data={srcs_groups} rows=All sort=groupOrder groupBy=grouping groupType=section>
+<DataTable data={cds_groups} rows=All sort=groupOrder groupBy=grouping groupType=section wrapTitles=true>
     <Column id=grouping/>
     <Column id=groupname title="Student Subgroup" />
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=groupFormat/>
+    <Column id=2024_accountabilitymet title="Accountability Met" colGroup=2024 align=center/>
     <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=groupFormat/>
     <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
