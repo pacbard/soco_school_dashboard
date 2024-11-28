@@ -1,0 +1,3 @@
+*.duckdb
+*.duckdb.wal
+ETL/2024_prerelease

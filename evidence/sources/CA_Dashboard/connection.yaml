@@ -1,0 +1,5 @@
+# This file was automatically generated
+name: CA_Dashboard
+type: motherduck
+options:
+  database: CA_Dashboard
