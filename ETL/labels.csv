@@ -1,0 +1,22 @@
+studentsubgroup, grouplabel, labelgroup
+ALL, All Students, All Students
+AA, Black/African American, Race/Ethnicity
+AI, American Indian or Alaska Native, Race/Ethnicity
+AS, Asian, Race/Ethnicity
+FI, Filipino, Race/Ethnicity
+HI, Hispanic, Race/Ethnicity
+PI, Pacific Islander, Race/Ethnicity
+WH, White, Race/Ethnicity
+MR, Multiple Races/Two or More, Race/Ethnicity
+EL, English Learner, Language Status
+LTEL, Long-Term English Learner, Language Status
+RFP, Reclassified English Proficient, Language Status
+IFEP, Initally English Proficient, Language Status
+ELO, English Learners Only, Language Status
+EO, English Only, Language Status
+SED, Socioeconomically Disadvantaged, Student Subgroup
+SWD, Students with Disabilities, Student Subgroup
+FOS, Foster Youth, Student Subgroup
+HOM, Homeless Youth, Student Subgroup
+SBA, Students who took the SBAC test, Testing Subgroup
+CAA, Students who took the CA Alternate test, Testing Subgroup
