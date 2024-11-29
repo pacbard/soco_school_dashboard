@@ -6,6 +6,8 @@
         dash.reportingyear::int as reportingyear,
         dash.studentgroup,
         dash.studentgroup as groupname,
+        grouplabel,
+        labelgroup,
         dash.currstatus,
         dash.changelevel,
         case 
@@ -32,6 +34,8 @@ pivot (select * from ${cds_long} where reportingyear = 2024) as dash
 on studentgroup
 using 
     max(groupname) as group,
+    max(labelgroup) as labelgroup,
+    max(grouplabel) as grouplabel,
     max(currstatus) as score,
     max(changelevel) as change, 
     max(level) as level,
@@ -1161,41 +1165,12 @@ select
         when '${params.indicator}' = 'GRAD' then '##0.0"%"'
         when '${params.indicator}' = 'CCI' then '##0.0"%"'
     end as groupFormat,
-    case
-        when studentGroup = 'ALL' then 1 
-        when studentGroup = 'AA' then 2
-        when studentGroup = 'AI' then 3
-        when studentGroup = 'AS' then 4
-        when studentGroup = 'FI' then 5
-        when studentGroup = 'HI' then 6
-        when studentGroup = 'PI' then 7
-        when studentGroup = 'MR' then 8
-        when studentGroup = 'WH' then 9
-        when studentGroup = 'EL' then 10
-        when studentGroup = 'LTEL' then 11
-        when studentGroup = 'EO' then 12
-        when studentGroup = 'RFP' then 13
-        when studentGroup = 'ELO' then 14
-        when studentGroup = 'FOS' then 20
-        when studentGroup = 'HOM' then 21
-        when studentGroup = 'SED' then 22
-        when studentGroup = 'SWD' then 23
-        when studentGroup = 'SBA' then 30
-        when studentGroup = 'CAA' then 31
-    end as groupOrder,
-    case
-        when groupOrder = 1 then 'All Students'
-        when groupOrder between 2 and 9 then 'Race/Ethnicity'
-        when groupOrder between 10 and 14 then 'Language Status'
-        when groupOrder between 20 and 23 then 'Student Subgroup'
-        when groupORder between 30 and 31 then 'Testing'
-    end as grouping
 from pivoted
 ```
 
-<DataTable data={cds_groups} rows=All sort=groupOrder groupBy=grouping groupType=section wrapTitles=true>
-    <Column id=grouping/>
-    <Column id=groupname title="Student Subgroup" />
+<DataTable data={cds_groups} rows=All groupBy=labelgroup groupType=section wrapTitles=true>
+    <Column id=labelgroup title=Group/>
+    <Column id=grouplabel title="Student Subgroup" />
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=groupFormat/>
     <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center/>
