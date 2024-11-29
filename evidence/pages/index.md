@@ -65,5 +65,5 @@ order by districtname
 <DataTable data={sonoma} search=true rows=all link=districtLink>
     <Column id=districtname title="District Name"/>
     <Column id=diffAssistance title="Differentiated Assistance"/>
-    <Column id=districtLink contentType=link linkLabel="Details →" align=center/>
+    <Column id=districtLink title="District Page" contentType=link linkLabel="Details →" align=center/>
 </DataTable>

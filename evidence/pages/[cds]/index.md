@@ -616,7 +616,7 @@ order by schoolname
 <DataTable data={schools} search=true rows=all link=schoolLink>
     <Column id=schoolname title="School Name"/>
     <Column id=diffAssistance title="Differentiated Assistance"/>
-    <Column id=schoolLink contentType=link linkLabel="Details →" align=center/>
+    <Column id=schoolLink title="Equity Dashboard" contentType=link linkLabel="Details →" align=center/>
 </DataTable>
 
 <LinkButton url='/'>
