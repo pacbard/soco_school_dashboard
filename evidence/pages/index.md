@@ -48,15 +48,16 @@ By providing targeted support and resources, differentiated assistance aims to h
 
 ```sql sonoma
 select
-    cds, 
-    districtname,
-    max(case when accountabilitymet = 'Y' then diffAssistance end) as diffAssistance,
-    '/' || cds as districtLink
+    dash.cds, 
+    dash.districtname,
+    assistance.diffAssistance as diffAssistance,
+    '/' || dash.cds as districtLink
 from CA_Dashboard.dash
+    left join (select reportingyear, cds, max(differentiatedAssistance) as diffAssistance from CA_Dashboard.assistance group by all) as assistance on dash.cds = assistance.cds and dash.reportingyear = assistance.reportingyear
 where
-    rtype = 'D'
+    dash.rtype = 'D'
     and
-    reportingyear = 2024
+    dash.reportingyear = 2024
 group by all
 order by districtname
 ```

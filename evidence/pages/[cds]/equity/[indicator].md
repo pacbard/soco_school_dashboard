@@ -3,26 +3,27 @@
 
 ```sql cds_long
     select
-        reportingyear::int as reportingyear,
-        studentgroup,
-        studentgroup as groupname,
-        currstatus,
-        changelevel,
+        dash.reportingyear::int as reportingyear,
+        dash.studentgroup,
+        dash.studentgroup as groupname,
+        dash.currstatus,
+        dash.changelevel,
         case 
-            when statuslevel = 0 then null
-            else statuslevel
+            when dash.statuslevel = 0 then null
+            else dash.statuslevel
         end as level,
-        color,
-        diffAssistance
+        dash.color,
+        assistance.diffAssistance
     from CA_Dashboard.dash
+        left join (select reportingyear, cds, indicator, studentgroup, differentiatedAssistance as diffAssistance from CA_Dashboard.assistance) as assistance on assistance.cds = '${params.cds}' and assistance.indicator = '${params.indicator}' and dash.reportingyear = assistance.reportingyear and dash.studentgroup = assistance.studentgroup
     where
-        cds = '${params.cds}'
+        dash.cds = '${params.cds}'
         and
-        indicator = '${params.indicator}'
+        dash.indicator = '${params.indicator}'
         and
-        left(reportingyear, 4)::int <> 2020
+        left(dash.reportingyear, 4)::int <> 2020
         and
-        left(reportingyear, 4)::int > 2018
+        left(dash.reportingyear, 4)::int > 2018
     order by reportingyear
 ```
 

@@ -10,31 +10,32 @@ where cds = '${params.cds}'
 
 ```sql cds_long
 select distinct
-    indicator,
-    reportingyear::int as reportingyear,
-    cds,
-    rtype,
-    countyname,
-    schoolname,
-    charter_flag,
-    coe_flag,
-    dass_flag,
-    studentgroup,
-    currstatus,
-    statuslevel,
-    changelevel,
-    color,
-    box,
-    diffAssistance
+    dash.indicator,
+    dash.reportingyear::int as reportingyear,
+    dash.cds,
+    dash.rtype,
+    dash.countyname,
+    dash.schoolname,
+    dash.charter_flag,
+    dash.coe_flag,
+    dash.dass_flag,
+    dash.studentgroup,
+    dash.currstatus,
+    dash.statuslevel,
+    dash.changelevel,
+    dash.color,
+    dash.box,
+    assistance.diffAssistance
 from CA_Dashboard.dash
+    left join (select reportingyear, cds, indicator, studentgroup, max(differentiatedAssistance) as diffAssistance from CA_Dashboard.assistance group by all) as assistance on dash.cds = assistance.cds and dash.reportingyear = assistance.reportingyear and dash.indicator = assistance.indicator and dash.studentgroup = assistance.studentgroup
 where 
-    cds = '${params.cds}'
+    dash.cds = '${params.cds}'
     and
-    left(reportingyear, 4)::int <> 2020
+    left(dash.reportingyear, 4)::int <> 2020
     and
-    left(reportingyear, 4)::int > 2018
+    left(dash.reportingyear, 4)::int > 2018
 order by
-    left(reportingyear, 4) desc
+    left(dash.reportingyear, 4) desc
 ```
 
 ```sql cds_wide
@@ -562,17 +563,18 @@ order by indicatorOrder desc
 
 ```sql schools
 select distinct
-    cds,
-    schoolname,
-    max(case when accountabilitymet = 'Y' then diffAssistance end) as diffAssistance,
-    '/' || cds as schoolLink
+    dash.cds,
+    dash.schoolname,
+    max(assistance.diffAssistance) as diffAssistance,
+    '/' || dash.cds as schoolLink
 from CA_Dashboard.dash
+    left join (select reportingyear, cds, max(differentiatedAssistance) as diffAssistance from CA_Dashboard.assistance group by all) as assistance on dash.cds = assistance.cds and dash.reportingyear = assistance.reportingyear
 where
-    left(cds, 7) = left(${params.cds}, 7)
+    left(dash.cds, 7) = left(${params.cds}, 7)
     and
-    reportingyear = 2024
+    dash.reportingyear = 2024
     and
-    rtype = 'S'
+    dash.rtype = 'S'
 group by all
 order by schoolname
 ```
