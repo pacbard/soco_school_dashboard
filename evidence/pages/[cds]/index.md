@@ -577,18 +577,25 @@ using
     <Column id=grouplabel title="Student Subgroup"/>
     <Column id=ELA_color title=Level colGroup="SBAC ELA" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=ELA_diffAssistance title="Differentiated Assistance" colGroup="SBAC ELA" align=center fmtColumn=indicatorFormat/>
+
     <Column id=MATH_color title=Level colGroup="SBAC MATH" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=MATH_diffAssistance title="Differentiated Assistance" colGroup="SBAC MATH" align=center fmtColumn=indicatorFormat/>
-    <Column id=CHRON_color title=Level colGroup="Chronic Absenteism" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=CHRON_diffAssistance title="Differentiated Assistance" colGroup="Chronic Absenteism" align=center fmtColumn=indicatorFormat/>
+
     <Column id=ELPI_color title=Level colGroup="EL Progress" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=ELPI_diffAssistance title="Differentiated Assistance" colGroup="EL Progress" align=center fmtColumn=indicatorFormat/>
+
     <Column id=GRAD_color title=Level colGroup="Graduation Rate" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=GRAD_diffAssistance title="Differentiated Assistance" colGroup="Graduation Rate" align=center fmtColumn=indicatorFormat/>
+
     <Column id=CCI_color title=Level colGroup="College & Career Readiness" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=CCI_diffAssistance title="Differentiated Assistance" colGroup="College & Career Readiness" align=center fmtColumn=indicatorFormat/>
+
+    <Column id=CHRON_color title=Level colGroup="Chronic Absenteism" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=CHRON_diffAssistance title="Differentiated Assistance" colGroup="Chronic Absenteism" align=center fmtColumn=indicatorFormat/>
+
     <Column id=SUS_color title=Level colGroup="Suspension Rates" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=SUS_diffAssistance title="Differentiated Assistance" colGroup="Suspension Rates" align=center fmtColumn=indicatorFormat/>
+
 </DataTable>
 
 {#if params.cds.substr(params.cds.length - 7) == '0000000' }
