@@ -5,7 +5,10 @@ select
     StatusType,
     County,
     District,
-    School,
+    case 
+        when School = 'No Data' then NULL
+        else School
+    end as School,
     case 
         when ClosedDate = 'No Data' then NULL
         else ClosedDate
