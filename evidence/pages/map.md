@@ -62,6 +62,8 @@ where
     colorPalette={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']}
     min=1
     max=5
+    legend=false
+    legendType=categorical
     height=600
 />
 
