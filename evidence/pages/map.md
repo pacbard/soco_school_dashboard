@@ -1,4 +1,6 @@
-# Mapping Performance
+---
+title: Performance Map
+---
 
 ```sql indicators
 select distinct
