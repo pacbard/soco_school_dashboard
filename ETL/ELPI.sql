@@ -1,7 +1,7 @@
 -- ELPI
 create or replace table ELPI_2024 as 
   select * from read_csv(
-    '2024_prerelease/ELPI_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/elpidownload2024.txt',
     delim = '\t',
     header = true
   );
@@ -48,7 +48,7 @@ create or replace table ELPI_2017 as
 create or replace view ELPI as 
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELPI_2024 where studentgroup = 'EL'
   union
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup end as studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELPI_2024
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELPI_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, 'ALL' as studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from ELPI_2023
   union

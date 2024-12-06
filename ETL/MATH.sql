@@ -1,7 +1,7 @@
 -- MATH
 create or replace table MATH_2024 as 
   select * from read_csv(
-    '2024_prerelease/MATH_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/MATHdownload2024.txt',
     delim = '\t',
     header = true
   );

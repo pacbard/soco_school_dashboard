@@ -1,7 +1,7 @@
 -- CHRON
 create or replace table CHRON_2024 as 
   select * from read_csv(
-    '2024_prerelease/CHRONIC_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/chronicdownload2024.txt',
     delim = '\t',
     header = true
   );

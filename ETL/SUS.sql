@@ -1,7 +1,7 @@
 -- SUS
 create or replace table SUS_2024 as 
   select * from read_csv(
-    '2024_prerelease/SUSPENSION_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/SUSPdownload2024.txt',
     delim = '\t',
     header = true
   );

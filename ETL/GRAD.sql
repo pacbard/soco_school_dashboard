@@ -1,7 +1,7 @@
 -- GRAD
 create or replace table GRAD_2024 as 
   select * from read_csv(
-    '2024_prerelease/GRAD_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/GRADdownload2024.txt',
     delim = '\t',
     header = true
   );

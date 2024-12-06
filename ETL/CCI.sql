@@ -1,7 +1,7 @@
 -- CCI
 create or replace table CCI_2024 as 
   select * from read_csv(
-    '2024_prerelease/CCI_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/ccidownload2024.txt',
     delim = '\t',
     header = true
   );

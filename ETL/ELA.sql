@@ -1,7 +1,7 @@
 -- ELA
 create or replace table ELA_2024 as 
   select * from read_csv(
-    '2024_prerelease/ELA_2024.txt',
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/ELAdownload2024.txt',
     delim = '\t',
     header = true
   );
