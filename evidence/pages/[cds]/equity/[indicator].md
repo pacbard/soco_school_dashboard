@@ -1,6 +1,24 @@
 
 # Equity Dashboard for {params.indicator}
 
+```sql cds_years
+select distinct
+    cast(cast(reportingyear as int) as varchar) as reportingyear
+from CA_Dashboard.dash
+where
+    dash.cds = '${params.cds}'
+    and
+    dash.indicator = '${params.indicator}'
+    and
+    left(dash.reportingyear, 4)::int not in (2020, 2021)
+    and
+    left(dash.reportingyear, 4)::int > 2018
+order by reportingyear desc
+```
+
+<ButtonGroup data={cds_years} name=year_filter value=reportingyear defaultValue="2024"/>
+
+
 ```sql cds_long
     select
         dash.reportingyear::int as reportingyear,
@@ -30,7 +48,7 @@
 ```
 
 ```sql cds_wide
-pivot (select * from ${cds_long} where reportingyear = 2024) as dash
+pivot (select * from ${cds_long} where reportingyear = ${inputs.year_filter}) as dash
 on studentgroup
 using 
     max(groupname) as group,
