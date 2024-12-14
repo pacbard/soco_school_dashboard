@@ -5,14 +5,24 @@ Each year, the California Department of Eduucation releases school accountabilit
 
 This website reports these data for Sonoma County Schools.
 
+<Alert status=Success>
+ESSA Accountability Indicators
+
+The California Department of Education (CDE) has released the school list that qualify for additional support under the ESSA accountability provision.
+
+The school-level data has been updated to report this new data.
+</Alert>
+
+
+
 <Alert status=warning>
 Differentiated Assistance Eligibility
 
-The California Department of Education (CDE) has yet to release the list of schools that qualify for differentiated assistance.
+The California Department of Education (CDE) has yet to release the list of district that qualify for differentiated assistance.
 
-Currently, we identify all districts and schools where at least one subgroup scored Very Low on one or more indicators as eligible for differentiated assistance.
+Currently, we identify all districts where at least one subgroup scored Very Low on one or more indicators as eligible for differentiated assistance.
 
-Please note that this indicator does not represent an official designation by the CDE. We will update the dataset once the CDE releases the list of eligible districts and schools.
+Please note that this indicator does not represent an official designation by the CDE. We will update the dataset once the CDE releases the list of eligible districts.
 </Alert>
 
 <Details title='More on Differentiated Assistance'>

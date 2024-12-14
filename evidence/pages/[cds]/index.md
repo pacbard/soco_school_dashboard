@@ -166,46 +166,48 @@ order by indicatorOrder
 # Equity Overview
 
 ```sql equity
-pivot (select indicator, studentgroup, labelgroup, grouplabel, currstatus, statuslevel, color, changelevel, box, diffAssistance from ${cds_long} where color is not null and reportingyear = ${inputs.year_filter})
+pivot (select 
+    indicator, studentgroup, labelgroup, grouplabel, currstatus, statuslevel, color, changelevel, box, max(diffAssistance) as diffAssistance 
+    from ${cds_long} 
+    where 
+        color is not null 
+        and 
+        reportingyear = ${inputs.year_filter}
+    group by all
+    )
 on indicator
 using
     max(currstatus) as score,
     max(statuslevel) as level,
     max(color) as color,
     max(changelevel) as changelevel,
-    max(box) as box,
-    max(diffAssistance) as diffAssistance
+    max(box) as box
 ```
 
 <DataTable data={equity} link=indicatorLink wrapTitles=true rows=all groupBy=labelgroup subtotals=false>
     <Column id=grouplabel title="Student Subgroup"/>
+    <Column id=diffAssistance title="Differentiated Assistance" align=center fmtColumn=indicatorFormat/>
+
 {#if equity[0].ELA_color}
     <Column id=ELA_color title=Level colGroup="SBAC ELA" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=ELA_diffAssistance title="Differentiated Assistance" colGroup="SBAC ELA" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].MATH_color}
     <Column id=MATH_color title=Level colGroup="SBAC MATH" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=MATH_diffAssistance title="Differentiated Assistance" colGroup="SBAC MATH" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].ELPI_color}
     <Column id=ELPI_color title=Level colGroup="EL Progress" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=ELPI_diffAssistance title="Differentiated Assistance" colGroup="EL Progress" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].GRAD_color}
     <Column id=GRAD_color title=Level colGroup="Graduation Rate" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=GRAD_diffAssistance title="Differentiated Assistance" colGroup="Graduation Rate" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].CCI_color}
     <Column id=CCI_color title=Level colGroup="College & Career Readiness" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=CCI_diffAssistance title="Differentiated Assistance" colGroup="College & Career Readiness" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].CHRON_color}
     <Column id=CHRON_color title=Level colGroup="Chronic Absenteism" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=CHRON_diffAssistance title="Differentiated Assistance" colGroup="Chronic Absenteism" align=center fmtColumn=indicatorFormat/>
 {/if}
 {#if equity[0].SUS_color}
     <Column id=SUS_color title=Level colGroup="Suspension Rates" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
-    <Column id=SUS_diffAssistance title="Differentiated Assistance" colGroup="Suspension Rates" align=center fmtColumn=indicatorFormat/>
 {/if}
 </DataTable>
 
@@ -270,9 +272,9 @@ order by indicatorOrder desc
 
 <DataTable data={cds_year} sort=indicatorOrder link=indicatorLink wrapTitles=true>
     <Column id=indicatorName title="Indicator" wrapTitles=true/>
+    <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center fmtColumn=indicatorFormat/>
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=indicatorFormat/>
-    <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center fmtColumn=indicatorFormat/>
     <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=indicatorFormat/>
     <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
