@@ -1,4 +1,3 @@
--- Download data from https://www.cde.ca.gov/schooldirectory/report?rid=dl1&tp=txt
 create or replace table schools as 
 select
     CDSCode as cds,
@@ -22,4 +21,4 @@ select
         else Longitude::float
     end as Longitude,
 
-from read_csv('pubschls.txt');
+from read_csv('data/pubschls.txt');
