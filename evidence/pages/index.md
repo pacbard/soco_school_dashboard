@@ -1,4 +1,3 @@
-
 # Sonoma County School Accountability Dashboard Data
 
 Each year, the California Department of Eduucation releases school accountability data through the California School Dashboard.
@@ -12,8 +11,6 @@ The California Department of Education (CDE) has released the school list that q
 
 The school-level data has been updated to report this new data.
 </Alert>
-
-
 
 <Alert status=warning>
 Differentiated Assistance Eligibility
@@ -53,8 +50,6 @@ By providing targeted support and resources, differentiated assistance aims to h
 [CDE website](https://www.cde.ca.gov/ta/ac/cm/leaproposedcrit.asp)
 
 </Details>
-
-
 
 ```sql sonoma
 select

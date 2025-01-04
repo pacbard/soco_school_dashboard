@@ -182,6 +182,7 @@ using
     max(color) as color,
     max(changelevel) as changelevel,
     max(box) as box
+order by grouplabel
 ```
 
 <DataTable data={equity} link=indicatorLink wrapTitles=true rows=all groupBy=labelgroup subtotals=false>
