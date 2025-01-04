@@ -1189,9 +1189,9 @@ from pivoted
 <DataTable data={cds_groups} rows=All groupBy=labelgroup groupType=section wrapTitles=true>
     <Column id=labelgroup title=Group/>
     <Column id=grouplabel title="Student Subgroup" />
+    <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center/>
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=groupFormat/>
-    <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center/>
     <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=groupFormat/>
     <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
