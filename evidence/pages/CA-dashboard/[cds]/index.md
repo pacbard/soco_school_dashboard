@@ -265,7 +265,7 @@ select
         when pivoted.indicator = 'GRAD' then '##0.0"%"'
         when pivoted.indicator = 'CCI' then '##0.0"%"'
     end as indicatorFormat,
-    '/${params.cds}/equity/' || pivoted.indicator as indicatorLink 
+    '/CA-dashboard/${params.cds}/equity/' || pivoted.indicator as indicatorLink 
 from pivoted
     join diffAssistance on diffAssistance.indicator = pivoted.indicator
 order by indicatorOrder desc
