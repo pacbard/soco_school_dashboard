@@ -1,7 +1,7 @@
 .vscode
 *.duckdb
 *.duckdb.wal
-ETL/2024_prerelease
+ETL/CA_Dashboard/2024_prerelease
 pubschls.txt
 *.csv
 *.xlsx
