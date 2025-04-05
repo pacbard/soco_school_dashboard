@@ -295,6 +295,6 @@ from pivoted
     <Column id=2019_score title=Score colGroup=2019 align=center fmtColumn=groupFormat/>
 </DataTable>
 
-<LinkButton url={'/'+params.cds}>
+<LinkButton url={'/CA-dashboard/'+params.cds}>
     Return 
 </LinkButton>

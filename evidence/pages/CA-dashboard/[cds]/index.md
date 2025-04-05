@@ -239,7 +239,7 @@ select distinct
     dash.cds,
     dash.schoolname,
     max(assistance.diffAssistance) as diffAssistance,
-    '/' || dash.cds as schoolLink
+    '/CA-dashboard/' || dash.cds as schoolLink
 from CA_Dashboard.dash
     left join (select reportingyear, cds, max(differentiatedAssistance) as diffAssistance from CA_Dashboard.assistance group by all) as assistance on dash.cds = assistance.cds and dash.reportingyear = assistance.reportingyear
 where
@@ -258,8 +258,8 @@ order by schoolname
     <Column id=schoolLink title="Equity Dashboard" contentType=link linkLabel="Details →" align=center/>
 </DataTable>
 
-<LinkButton url='/'>
-    Return to home page
+<LinkButton url='/CA-dashboard/'>
+    Return to CA Dashboard home
 </LinkButton>
 
 {:else}
