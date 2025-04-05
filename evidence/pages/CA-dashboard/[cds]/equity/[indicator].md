@@ -68,541 +68,88 @@ order by ReportingYear desc
 
 <Grid cols=6>
 
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.ALL_color,
-            name: 'All Students' 
-            }
-        ]
-        }
-    ]
-    }
-}
+<Gauge 
+    value='{year.ALL_color}'
+    name='All Students'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
 {#if year.AA_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.AA_color,
-            name: 'Black / Af-Am' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.AA_color}'
+    name='Black / Af-Am'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.AI_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.AI_color,
-            name: 'Am In/Alaska Nat' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.AI_color}'
+    name='Am In/Alaska Nat'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.AS_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.AS_color,
-            name: 'Asian' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.AS_color}'
+    name='Asian'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.FI_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.FI_color,
-            name: 'Filipino' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.FI_color}'
+    name='Filipino'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.HI_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.HI_color,
-            name: 'Hispanic / Latino' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.HI_color}'
+    name='Hisp / Latino'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.MR_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.MR_color,
-            name: 'Multiple Races' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.MR_color}'
+    name='Mult Races'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.PI_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.PI_color,
-            name: 'Pacific Islander' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.PI_color}'
+    name='Pac Islander'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.WH_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.WH_color,
-            name: 'White' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.WH_color}'
+    name='White'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
 {/if}
@@ -617,542 +164,90 @@ order by ReportingYear desc
 
 <Grid cols=6>
 
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.ALL_color,
-            name: 'All Students' 
-            }
-        ]
-        }
-    ]
-    }
-}
+<Gauge 
+    value='{year.ALL_color}'
+    name='All Students'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
 {#if year.EL_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.EL_color,
-            name: 'English Learners' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.EL_color}'
+    name='Lang Learners'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.LTEL_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.LTEL_color,
-            name: 'Long Term EL' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.LTEL_color}'
+    name='Long Term EL'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.RFP_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.RFP_color,
-            name: 'Reclassified' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.RFEP_color}'
+    name='Reclassified EL'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.EO_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.EO_color,
-            name: 'English Only' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.EO_color}'
+    name='English Only'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.FOS_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.FOS_color,
-            name: 'Foster Youth' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.FOS_color}'
+    name='Foster Youth'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.HOM_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.HOM_color,
-            name: 'Homeless' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.HOM_color}'
+    name='Homeless'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.SED_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.SED_color,
-            name: 'Soc-Econ Dis' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.SED_color}'
+    name='Soc-Econ Dis'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 {#if year.SWD_score }
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: year.SWD_color,
-            name: 'Stu w/ Disabilities' 
-            }
-        ]
-        }
-    ]
-    }
-}
+
+<Gauge 
+    value='{year.SWD_color}'
+    name='Stu w/ Disab'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
+
 {/if}
 
 </Grid>
@@ -1190,13 +285,13 @@ from pivoted
     <Column id=labelgroup title=Group/>
     <Column id=grouplabel title="Student Subgroup" />
     <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center/>
-    <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=groupFormat/>
-    <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=groupFormat/>
-    <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2022_score title=Score colGroup=2022 align=center fmtColumn=groupFormat/>
-    <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2019_score title=Score colGroup=2019 align=center fmtColumn=groupFormat/>
 </DataTable>
 

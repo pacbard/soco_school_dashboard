@@ -101,62 +101,10 @@ order by indicatorOrder
 
 {#each cds_results as indicator}
 
-<ECharts height="130px" config={
-    {
-    series: [
-        {
-        type: 'gauge',
-        startAngle: 180,
-        endAngle: 0,
-        center: ['50%', '75%'],
-        radius: '90%',
-        min: 0.5,
-        max: 5.5,
-        splitNumber: -1,
-        title: {
-            offsetCenter: [0, '30%'],
-            fontSize: 14
-        },
-        axisLine: {
-            lineStyle: {
-            width: 6,
-            color: [
-                [0.2, '#CE2F2C'],
-                [0.4, '#EE7C37'],
-                [0.60, '#F5BC42'],
-                [0.80, '#41934C'],
-                [1, '#4B6AC9']
-            ]
-            }
-        },
-        pointer: {
-            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: {
-            color: 'auto'
-            }
-        },
-        detail: {
-            fontSize: 30,
-            offsetCenter: [0, '-15%'],
-            valueAnimation: true,
-            formatter: function (value) {
-            return value + '';
-            },
-            color: 'inherit'
-        },
-        data: [
-            {
-            value: indicator.color,
-            name: indicator.name 
-            }
-        ]
-        }
-    ]
-    }
-}
+<Gauge 
+    value='{indicator.level}'
+    name='{indicator.indicator_name}'
+    colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
 {/each}
@@ -190,25 +138,25 @@ order by grouplabel
     <Column id=diffAssistance title="Differentiated Assistance" align=center fmtColumn=indicatorFormat/>
 
 {#if equity[0].ELA_color}
-    <Column id=ELA_color title="SBAC ELA" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=ELA_color title="SBAC ELA" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].MATH_color}
-    <Column id=MATH_color title="SBAC MATH" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=MATH_color title="SBAC MATH" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].ELPI_color}
-    <Column id=ELPI_color title="EL Progress" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=ELPI_color title="EL Progress" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].GRAD_color}
-    <Column id=GRAD_color title="Graduation Rate" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=GRAD_color title="Graduation Rate" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].CCI_color}
-    <Column id=CCI_color title="College & Career Readiness" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=CCI_color title="College & Career Readiness" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].CHRON_color}
-    <Column id=CHRON_color title="Chronic Absenteism" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=CHRON_color title="Chronic Absenteism" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 {#if equity[0].SUS_color}
-    <Column id=SUS_color title="Suspension Rates" align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=SUS_color title="Suspension Rates" align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
 {/if}
 </DataTable>
 
@@ -274,13 +222,13 @@ order by indicatorOrder desc
 <DataTable data={cds_year} sort=indicatorOrder link=indicatorLink wrapTitles=true>
     <Column id=indicatorName title="Indicator" wrapTitles=true/>
     <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center fmtColumn=indicatorFormat/>
-    <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=indicatorFormat/>
-    <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2023_score title=Score colGroup=2023 align=center fmtColumn=indicatorFormat/>
-    <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2022_color title=Level colGroup=2022 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2022_score title=Score colGroup=2022 align=center fmtColumn=indicatorFormat/>
-    <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale scaleColor={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2019_color title=Level colGroup=2019 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2019_score title=Score colGroup=2019 align=center fmtColumn=indicatorFormat/>
 </DataTable>
 
