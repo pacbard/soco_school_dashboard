@@ -1,7 +1,7 @@
 # Academic Indicators
 
 <Alert status=info>
-ESSA Accountability Indicators
+<b>ESSA Accountability Indicators</b>
 
 The California Department of Education (CDE) has released the school list that qualify for additional support under the ESSA accountability provision.
 
@@ -9,7 +9,7 @@ The school-level data has been updated to report this new data.
 </Alert>
 
 <Alert status=info>
-Differentiated Assistance Eligibility
+<b>Differentiated Assistance Eligibility</b>
 
 The California Department of Education (CDE) has yet to release the list of district that qualify for differentiated assistance.
 
