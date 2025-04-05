@@ -8,7 +8,9 @@ This website reports these data for Sonoma County Schools.
 
 <div class="grid grid-cols-2 gap-4">
 
-<Card title="California School Dashboard" size="max-w-sm" padding="p-6" style="text-center bg-white border border-gray-200 rounded-lg shadow-sm" >
+<Card title="" size="max-w-sm" padding="p-4" style="text-center bg-white border border-gray-200 rounded-lg shadow-sm" >
+
+![California Dashboard Logo](ca-dash-logo.png)
 
 Explore data from the California School Dashboard.
 
@@ -18,7 +20,7 @@ Explore data from the California School Dashboard.
 
 </Card>
 
-<Card title="California Fiscal Data" size="max-w-sm" padding="p-6" style="text-center bg-white border border-gray-200 rounded-lg shadow-sm" >
+<Card title="California Fiscal Data" size="max-w-sm" padding="p-4" style="text-center bg-white border border-gray-200 rounded-lg shadow-sm" >
 
 Explore fiscal data.
 
