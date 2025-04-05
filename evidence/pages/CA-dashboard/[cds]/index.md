@@ -264,7 +264,7 @@ order by schoolname
 
 {:else}
 
-<LinkButton url={'/CA_dashboard/'+params.cds.substr(0, 7) + '0000000'}>
+<LinkButton url={'/CA-dashboard/'+params.cds.substr(0, 7) + '0000000'}>
     Return to district page
 </LinkButton>
 
