@@ -103,7 +103,7 @@ order by indicatorOrder
 
 <Gauge 
     value='{indicator.level}'
-    name='{indicator.indicator_name}'
+    name='{indicator.name}'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 

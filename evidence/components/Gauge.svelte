@@ -20,7 +20,7 @@
         splitNumber: -1,
         title: {
             offsetCenter: [0, '30%'],
-            fontSize: 18
+            fontSize: 14
         },
         axisLine: {
             lineStyle: {

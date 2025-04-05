@@ -88,7 +88,7 @@ order by ReportingYear desc
 
 <Gauge 
     value='{year.AI_color}'
-    name='Am In/Alaska Nat'
+    name='Am In/Alaska Native'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
@@ -128,7 +128,7 @@ order by ReportingYear desc
 
 <Gauge 
     value='{year.MR_color}'
-    name='Mult Races'
+    name='Multiple Races'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
@@ -138,7 +138,7 @@ order by ReportingYear desc
 
 <Gauge 
     value='{year.PI_color}'
-    name='Pac Islander'
+    name='Pacific Islander'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
@@ -174,7 +174,7 @@ order by ReportingYear desc
 
 <Gauge 
     value='{year.EL_color}'
-    name='Lang Learners'
+    name='Language Learners'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
@@ -244,7 +244,7 @@ order by ReportingYear desc
 
 <Gauge 
     value='{year.SWD_color}'
-    name='Stu w/ Disab'
+    name='Stu w/ Disabilities'
     colors={[[0.2, '#CE2F2C'], [0.4, '#EE7C37'], [0.60, '#F5BC42'], [0.80, '#41934C'], [1, '#4B6AC9']]}
 />
 
