@@ -20,4 +20,4 @@ copy (
   from read_parquet('data/sacs/processed/parquet/UserGL/*.parquet', 
     union_by_name=True)
   order by CCcode, Dcode, Scode, FiscalYear, Account, Fund, Resource, Projectyear, Goal, Function
-) to 'data/UserGL.parquet' (FORMAT parquet, PARTITION_BY (FiscalYear), COMPRESSION zstd, ROW_GROUP_SIZE 100_000)
+) to 'data/UserGL.parquet' (FORMAT parquet, COMPRESSION zstd, ROW_GROUP_SIZE 100_000)
