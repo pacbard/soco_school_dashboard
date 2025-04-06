@@ -18,3 +18,10 @@
 - **UserGLTotals**: General ledger totals. Size: 113M
 - **LEAs**: Local Education Agency database with ADA totals. Size: 155K
 - **Object**: Object code to description tables. Size: 13K
+
+# Upload to Motherduck
+
+```
+ATTACH 'md:';
+CREATE DATABASE CA_Fiscal from 'CA_Fiscal.duckdb';
+```
