@@ -2,6 +2,7 @@
 *.duckdb
 *.duckdb.wal
 ETL/CA_Dashboard/2024_prerelease
+ETL/CA_Fiscal/data
 pubschls.txt
 *.csv
 *.xlsx
