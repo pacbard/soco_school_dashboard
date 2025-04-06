@@ -13,6 +13,10 @@ select * from ${lea} as LEA where LEA.ccode || LEA.dcode = '${params.cdcode}'
 Comparable Districts
 </LinkButton>
 
+<LinkButton url='/CA-fiscal/{params.cdcode}/ada'>
+ADA Change Comparison
+</LinkButton>
+
 # Average Daily Attendance
 
 ```sql chart_stats
