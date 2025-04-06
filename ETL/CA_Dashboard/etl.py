@@ -27,7 +27,7 @@ def download_school_file():
 
 def run_sql_query(file, con):
 
-    with open(file, 'r') as f:
+    with open('queries/' + file, 'r') as f:
       query = f.read()
       try:
         con.execute(query)
