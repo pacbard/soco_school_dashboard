@@ -24,8 +24,8 @@ Explore data from the California School Dashboard.
 
 Explore fiscal data.
 
-<LinkButton url=''>
-    Coming Soon
+<LinkButton url='/CA-fiscal/'>
+Go to Dashboard
 </LinkButton>
 
 </Card>
