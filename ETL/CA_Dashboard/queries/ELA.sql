@@ -1,4 +1,11 @@
 -- ELA
+create or replace table ELA_2025 as 
+  select * from read_csv(
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/ELAdownload2025.txt',
+    delim = '\t',
+    header = true
+  );
+
 create or replace table ELA_2024 as 
   select * from read_csv(
     'https://www3.cde.ca.gov/researchfiles/cadashboard/ELAdownload2024.txt',
@@ -38,6 +45,8 @@ create or replace table ELA_2018 as
   );
 
 create or replace view ELA as 
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELA_2025
+  union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from ELA_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from ELA_2023

@@ -1,4 +1,11 @@
 -- SUS
+create or replace table SUS_2025 as 
+  select * from read_csv(
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/SUSPdownload2025.txt',
+    delim = '\t',
+    header = true
+  );
+
 create or replace table SUS_2024 as 
   select * from read_csv(
     'https://www3.cde.ca.gov/researchfiles/cadashboard/SUSPdownload2024.txt',
@@ -46,7 +53,9 @@ create or replace table SUS_2017 as
   );
 
 create or replace view SUS as 
-  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from SUS_2024
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from SUS_2025
+  union
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from SUS_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from SUS_2023
   union

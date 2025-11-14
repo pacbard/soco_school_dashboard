@@ -1,4 +1,11 @@
 -- CHRON
+create or replace table CHRON_2025 as 
+  select * from read_csv(
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/chronicdownload2025.txt',
+    delim = '\t',
+    header = true
+  );
+
 create or replace table CHRON_2024 as 
   select * from read_csv(
     'https://www3.cde.ca.gov/researchfiles/cadashboard/chronicdownload2024.txt',
@@ -37,7 +44,9 @@ create or replace table CHRON_2018 as
     ignore_errors=true
   );
 
-create or replace view CHRON as 
+create or replace view CHRON as
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from CHRON_2025
+  union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from CHRON_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from CHRON_2023

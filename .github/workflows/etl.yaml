@@ -1,0 +1,37 @@
+name: ETL Process
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  motherduck_token: ${{ secrets.MOTHERDUCK_TOKEN }}
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Install the project
+        run: uv sync --all-extras --dev
+
+      - name: Run ETL scripts - CA Dashboard
+        working-directory: etl/CA_dashboard
+        run: |
+          uv run python etl.py
+          duckdb -f queries/upload_to_MD.sql
+
+      - name: Run ETL scripts - CA Fiscal
+        working-directory: etl/CA_Fiscal
+        run: |
+          uv run python download.py
+          uv run python etl.py  --output-dir data/sacs/processed data/sacs/raw
+          uv run python etl.py  --output-dir data/J-90/processed data/J-90/raw
+          find queries/ -name "*.sql" ! -name "upload_to_MD.sql" -exec duckdb -f {} \;
+          duckdb -f queries/upload_to_MD.sql
+      

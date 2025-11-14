@@ -18,7 +18,7 @@ where
 order by reportingyear desc
 ```
 
-<ButtonGroup data={cds_years} name=year_filter value=reportingyear defaultValue="2024"/>
+<ButtonGroup data={cds_years} name=year_filter value=reportingyear defaultValue="2025"/>
 
 ```sql cds_long
 select distinct
@@ -179,9 +179,9 @@ pivoted as (
 diffAssistance as (
     select 
         indicator, 
-        max(diffAssistance) as "2024_diffAssistance" 
+        max(diffAssistance) as "2025_diffAssistance" 
     from ${cds_long} 
-    where reportingyear = 2024 
+    where reportingyear = 2025
     group by all
 )
 select
@@ -221,7 +221,9 @@ order by indicatorOrder desc
 
 <DataTable data={cds_year} sort=indicatorOrder link=indicatorLink wrapTitles=true>
     <Column id=indicatorName title="Indicator" wrapTitles=true/>
-    <Column id=2024_diffAssistance title="Differentiated Assistance" colGroup=2024 align=center fmtColumn=indicatorFormat/>
+    <Column id=2025_diffAssistance title="Differentiated Assistance" colGroup=2025 align=center fmtColumn=indicatorFormat/>
+    <Column id=2025_color title=Level colGroup=2025 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
+    <Column id=2025_score title=Score colGroup=2025 align=center fmtColumn=indicatorFormat/>
     <Column id=2024_color title=Level colGroup=2024 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
     <Column id=2024_score title=Score colGroup=2024 align=center fmtColumn=indicatorFormat/>
     <Column id=2023_color title=Level colGroup=2023 align=center contentType=colorscale colorScale={['#CE2F2C', '#EE7C37', '#F5BC42', '#41934C', '#4B6AC9']} colorBreakpoints={[1,2,3,4,5]} />
@@ -245,7 +247,7 @@ from CA_Dashboard.dash
 where
     left(dash.cds, 7) = left(${params.cds}, 7)
     and
-    dash.reportingyear = 2024
+    dash.reportingyear = 2025
     and
     dash.rtype = 'S'
 group by all

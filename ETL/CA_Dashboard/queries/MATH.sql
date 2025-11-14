@@ -1,4 +1,11 @@
 -- MATH
+create or replace table MATH_2025 as 
+  select * from read_csv(
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/MATHdownload2025.txt',
+    delim = '\t',
+    header = true
+  );
+
 create or replace table MATH_2024 as 
   select * from read_csv(
     'https://www3.cde.ca.gov/researchfiles/cadashboard/MATHdownload2024.txt',
@@ -38,6 +45,8 @@ create or replace table MATH_2018 as
   );
 
 create or replace view MATH as 
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from MATH_2025
+  union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from MATH_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, null as accountabilitymet from MATH_2023

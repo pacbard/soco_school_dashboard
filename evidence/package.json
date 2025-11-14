@@ -1,6 +1,6 @@
 {
   "name": "soco-school-dashboard",
-  "version": "2025-04-05",
+  "version": "2025-11-13",
   "scripts": {
     "build": "evidence build",
     "build:strict": "evidence build:strict",
@@ -15,20 +15,17 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/bigquery": "^2.0.10",
-    "@evidence-dev/core-components": "^5.2.0",
-    "@evidence-dev/csv": "^1.0.14",
-    "@evidence-dev/databricks": "^1.0.8",
-    "@evidence-dev/duckdb": "^1.0.13",
-    "@evidence-dev/evidence": "^40.1.1",
-    "@evidence-dev/motherduck": "^1.0.4",
-    "@evidence-dev/mssql": "^1.1.2",
-    "@evidence-dev/mysql": "^1.1.4",
-    "@evidence-dev/postgres": "^1.0.7",
-    "@evidence-dev/snowflake": "^1.2.2",
-    "@evidence-dev/source-javascript": "^0.0.3",
-    "@evidence-dev/sqlite": "^2.0.7",
-    "@evidence-dev/trino": "^1.0.9"
+    "@evidence-dev/evidence": "^40.1.5",
+    "@evidence-dev/duckdb": "file:.pack/evidence-dev-duckdb-1.0.13.tgz",
+    "@evidence-dev/universal-sql": "file:.pack/evidence-dev-universal-sql-2.2.11.tgz",
+    "@evidence-dev/db-commons": "file:.pack/evidence-dev-db-commons-1.0.6.tgz",
+    "@evidence-dev/core-components": "^5.3.1"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.37.0"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",

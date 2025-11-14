@@ -10,6 +10,6 @@ select
   end as FiscalYear,
   code as Goal,
   title as Description,
-from read_parquet('data/sacs/processed/parquet/GOal/*.parquet', 
+from read_parquet('data/sacs/processed/parquet/Goal/*.parquet', 
                   union_by_name=True, filename=True)
 order by FiscalYear, Goal;

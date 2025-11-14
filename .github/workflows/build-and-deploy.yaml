@@ -1,0 +1,50 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  EVIDENCE_SOURCE__CA_Dashboard__database: ${{ secrets.MOTHERDUCK_TOKEN }}
+  EVIDENCE_SOURCE__CA_Fiscal__database: ${{ secrets.MOTHERDUCK_TOKEN }}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        working-directory: evidence/
+        run: npm install
+      - name: Run Evidence sources
+        working-directory: evidence/
+        run: npm exec evidence sources
+      - name: Build Evidence project
+        working-directory: evidence/
+        run: npm exec evidence build
+      - name: Deploy to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'evidence/build/'
+
+  publish:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

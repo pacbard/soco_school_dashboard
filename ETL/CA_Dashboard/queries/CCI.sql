@@ -1,4 +1,11 @@
 -- CCI
+create or replace table CCI_2025 as 
+  select * from read_csv(
+    'https://www3.cde.ca.gov/researchfiles/cadashboard/ccidownload2025.txt',
+    delim = '\t',
+    header = true
+  );
+
 create or replace table CCI_2024 as 
   select * from read_csv(
     'https://www3.cde.ca.gov/researchfiles/cadashboard/ccidownload2024.txt',
@@ -45,7 +52,9 @@ create or replace table CCI_2017 as
     ignore_errors=true
   );
 
-create or replace view CCI as 
+create or replace view CCI as
+  select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from CCI_2025
+  union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, changelevel, color, box, accountabilitymet from CCI_2024
   union
   select reportingyear, cds, rtype, countyname, districtname, schoolname, charter_flag, coe_flag, dass_flag, studentgroup, currstatus, statuslevel, null as changelevel, statuslevel as color, null as box, null as accountabilitymet from CCI_2023
