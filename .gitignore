@@ -6,3 +6,4 @@ ETL/CA_Fiscal/data
 pubschls.txt
 *.csv
 *.xlsx
+.env
