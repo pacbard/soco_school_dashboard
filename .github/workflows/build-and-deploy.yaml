@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  EVIDENCE_SOURCE__CA_Dashboard__database: ${{ secrets.MOTHERDUCK_TOKEN }}
-  EVIDENCE_SOURCE__CA_Fiscal__database: ${{ secrets.MOTHERDUCK_TOKEN }}
+  EVIDENCE_SOURCE__CA_Dashboard__token: ${{ secrets.MOTHERDUCK_TOKEN }}
+  EVIDENCE_SOURCE__CA_Fiscal__token: ${{ secrets.MOTHERDUCK_TOKEN }}
 
 jobs:
 
