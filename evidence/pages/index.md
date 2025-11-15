@@ -20,14 +20,4 @@ Explore data from the California School Dashboard.
 
 </Card>
 
-<Card title="California Fiscal Data" size="max-w-sm" padding="p-4" style="text-center bg-white border border-gray-200 rounded-lg shadow-sm" >
-
-Explore fiscal data.
-
-<LinkButton url='/CA-fiscal/'>
-Go to Dashboard
-</LinkButton>
-
-</Card>
-
 </div>
